@@ -19,10 +19,8 @@ $( _ => {
 
     if (err) { return alert(err.message);}
 
-    state.pokedex = json;
-    console.log(state.pokedex.pokemon_entries.forEach(function(e){
-      console.log(e.pokemon_species.name);
-    }));
+    state.pokedex = json.pokemon_entries;
+    
     const root = $('.root');
     render(root);
   });

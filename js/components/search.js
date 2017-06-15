@@ -1,33 +1,33 @@
 'use strict';
 
 const searchItem = (data) => {
-  const box = $('<div class="box"></div>');
-  const dName = $('<p>' + data.name +'</p>');
-  const dAddress = $('<p>' + data.address + '</p>');
-  const dDistrict = $('<p>' + data.district + '</p>');
-  box.append(dName);
-  box.append(dAddress);
-  box.append(dDistrict);
-  return box;
-  console.log(dDistrict);
+  const divPokeImg = $('<div class="divPokeImg"></div>');
+  const pokeImg = $('<img src="http://serebii.net/art/th/' + data.entry_number +'.png">');
+  const name = $('<p>' + data.pokemon_species.name + '</p>');
+  const spanUrl = $('<span>' + data.pokemon_species.url + '</span>');
+  divPokeImg.append(spanUrl);
+  divPokeImg.append(pokeImg);
+  divPokeImg.append(name);
+  return divPokeImg;
 }
 const reRender = (x,y) => {
   x.empty();
-  y.forEach((elemento)=>{
-    x.append(searchItem(elemento));
+  y.forEach((e)=>{
+    x.append(searchItem(e));
   });
 
 }
-const Search = (update) => {
-  const searchSection = $('<section class="searchSection"></section>');
-  const input = $('<input type="text" placeholder="Ingresa tu distrito a buscar"></input>');
-  const searchItemSection = $('<section class="searchItemSection"></section>');
+const Search = () => {
+  const searchSection = $('<section></section>');
+  const input = $('<input type="text"></input>');
+  const searchItemDiv = $('<div></div>');
   searchSection.append(input);
-  searchSection.append(searchItemSection);
+  searchSection.append(searchItemDiv);
   input.on('keyup',(e)=>{
     const find = filterByDistrict(state.pokedex,input.val());
-    reRender(searchItemSection,find);
-    console.log(find);
+    reRender(searchItemDiv,find);
+
   });
+  reRender(searchItemDiv,state.pokedex)
   return searchSection;
 }

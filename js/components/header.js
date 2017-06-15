@@ -2,7 +2,7 @@
 
 const Header = (update) => {
   const header = $("<header></header>");
-  const title = $("<span>Gas Finder</span>");
+  const title = $("<span>Pokédex</span>");
   header.append(title);
   return header;
 }
