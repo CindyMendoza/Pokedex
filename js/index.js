@@ -14,15 +14,15 @@ const state = {
 };
 
 $( _ => {
+  $('.modal').modal();
 
-  getJSON('http://pokeapi.co/api/v2/pokedex/1/', (err, json) => {
+  getJSON('http://pokeapi.co/api/v2/pokedex/1/',(err, json) => {
 
     if (err) { return alert(err.message);}
 
     state.pokedex = json.pokemon_entries;
-    
+
     const root = $('.root');
     render(root);
   });
-
 });
