@@ -14,7 +14,6 @@ const state = {
 };
 
 $( _ => {
-  $('.modal').modal();
 
   getJSON('http://pokeapi.co/api/v2/pokedex/1/',(err, json) => {
 
@@ -25,4 +24,6 @@ $( _ => {
     const root = $('.root');
     render(root);
   });
+  $('.modal').modal();
+
 });
