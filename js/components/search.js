@@ -38,7 +38,7 @@ const Search = () => {
   searchSection.append(input);
   searchSection.append(searchItemDiv);
   input.on('keyup',(e)=>{
-    const find = filterByDistrict(state.pokedex,input.val());
+    const find = filterByName(state.pokedex,input.val());
     reRender(searchItemDiv,find);
 
   });
