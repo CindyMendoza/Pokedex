@@ -3,27 +3,32 @@
 const render = (root) => {
   root.empty();
   const wrapper = $('<div class="wrapper"></div>');
-  wrapper.append(Header(_ => render(root)));
-  wrapper.append(Search(_ => render(root)));
+  wrapper.append(allPokemons());
+  // wrapper.append(pokeDetails());
   root.append(wrapper);
 }
 
 const state = {
-  pokedex: null,
-  selectedStation: null
+  pok :null,
+  // pokSe :null,
+  // pokSp:null,
+  // pokCo:null,
+  // ln:'es'
 };
 
 $( _ => {
+  const root = $('#root');
+  render(root);
 
-  getJSON('http://pokeapi.co/api/v2/pokedex/1/',(err, json) => {
+  getPoke((err, data) => {
 
     if (err) { return alert(err.message);}
 
-    state.pokedex = json.pokemon_entries;
+    state.pok = data;
+    console.log(data.pokemon_entries);
 
-    const root = $('.root');
-    render(root);
+
   });
-  $('.modal').modal();
+  // $('.modal').modal();
 
 });

@@ -1,11 +1,45 @@
 body *{
   margin:0px;
   padding:0px;
-  border: 0px;
   box-sizing: border-box;
 }
-.divPokeImg{
-  display: inline-block;
-  width: 200px;
-  height: 200px;
+.flex-row{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.flex-row-star{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+.txt-red{
+  color: red;
+}
+.input-group{
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid grey;
+}
+.input-group .form-control{
+  border: none;
+  box-shadow: none;
+}
+.input-group .form-control:focus{
+  box-shadow: none;
+}
+.input-group .input-group-addon{
+  background-color: transparent;
+  border: none;
+}
+.glyphicon{
+  font-size: 2.1em;
+  color: gray;
 }
