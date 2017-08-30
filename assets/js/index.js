@@ -17,18 +17,16 @@ const state = {
 };
 
 $( _ => {
-  const root = $('#root');
-  render(root);
-
-  getPoke((err, data) => {
-
-    if (err) { return alert(err.message);}
-
-    state.pok = data;
-    console.log(data.pokemon_entries);
 
 
-  });
+  getPoke((error, data)=>{
+       if (error){return alert(error);}
+       state.pok = data;
+       const root = $('#root');
+       render(root);
+       console.log(state.pok);
+   });
+
   // $('.modal').modal();
 
 });

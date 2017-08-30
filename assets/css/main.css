@@ -11,6 +11,14 @@ body *{
   align-items: center;
   align-content: center;
 }
+.flex-column{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
 .flex-row-star{
   display: flex;
   flex-direction: row;
@@ -42,4 +50,34 @@ body *{
 .glyphicon{
   font-size: 2.1em;
   color: gray;
+}
+.divcont{
+    background-color: lightgray;
+    margin: 15px;
+}
+.divImg{
+  overflow: hidden;
+  width: 200px;
+  height: 200px;
+  padding: 25px 15px;
+}
+.trapecio {
+    width: 200px;
+    height: 60px;
+    background-image: url(../icon/base.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.divImg img{
+  width: 100%;
+  height: 100%;
+}
+.ico{
+  width: 26px;
+  height: 26px;
+  padding: 5px;
+}
+.name{
+  text-transform: capitalize;
+  font-weight: 100;
 }
