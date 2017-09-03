@@ -13,4 +13,5 @@ Vista pokémones
 ![Vista pokémones](https://github.com/CindyMendoza/Pokedex/blob/master/assets/Landing%20design/pokedex-grid.png)
 
 Vista detalle pokémon
+Dale click a la imagen y espera unos segundos para que puedas ver los detalles de cada Pokémon.
 ![Vista detalle pokémon](https://github.com/CindyMendoza/Pokedex/blob/master/assets/Landing%20design/pokedex-popup.png)

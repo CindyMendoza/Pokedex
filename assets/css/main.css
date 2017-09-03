@@ -30,6 +30,7 @@ body *{
 .txt-red{
   color: red;
 }
+/*Filter*/
 .input-group{
   border-top: none;
   border-left: none;
@@ -51,6 +52,7 @@ body *{
   font-size: 2.1em;
   color: gray;
 }
+/*All img*/
 .divcont{
     background-color: lightgray;
     margin: 15px;
@@ -96,4 +98,31 @@ a:hover, .divcont:hover,a:focus,.divcont:focus{
 }
 .icon-x:before {
   content: "\e900";
+}
+.des{
+  padding: 10px;
+  text-align: justify;
+}
+.txt-white{
+  color:white;
+}
+.bg-steelblue{
+  background-color: steelblue;
+}
+.carac{
+  width: 48rem;
+  height: 200px;
+}
+.lef{
+  padding: 50px 50px 50px 0px;
+  margin-left: 0;
+}
+.rig{
+  padding: 50px 0px 50px 50px;
+  margin-right: 0px;
+}
+.tip , .deb {
+    width: 48rem;
+    height: auto;
+    padding: 5px;
 }

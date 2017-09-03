@@ -1,39 +1,68 @@
 'use strict';
 
 const fmodal= (data,description,altura,peso,catego,habili,tipo,debilidad)=>{
-  console.log(habili);
+  console.log(debilidad);
   const modalp =$(`<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel"></div>`);
   const dialog = $('<div class="modal-dialog modal-lg" role="document"></div>');
   const content =$('<div class=\'modal-content\'></div>');
-  const body =$(`<div class="modal-body">
-                <div class="row">
-                <div class="col-xs-10 flex-column">
-                <h2 class='h2 modal-title'>${data.pokemon_species.name}</h2></div>
-                <div class="col-xs-2 flex-column"><button type="button" class="close"
-                data-dismiss="modal" aria-label="Close">
-                <span class="fa fa-times fa-lg" aria-hidden="true"></span></button></div>
-                </div>
-                <div class="row">
-                <div class="col-xs-5 flex-column">
-                <div class="flex-column divcont">
-                <div class="divImg">
-                <img src='https://serebii.net/art/th/${data.entry_number}.png' alt=""></div>
-                <div class="trapecio flex-column">
-                <div class="flex-row divico">
-                <img class="ico" src="assets/icon/pokeball_gray.png">
-                <img class="ico" src="assets/icon/valentines-heart.png">
-                <img class="ico" src="assets/icon/data.png"></div></div></div></div>
-                <div class="col-xs-7">
-                <p>${description}</p>
-                <div class="flex-row"><span><p>Altura:<br>${(altura/10).toFixed(1)}m</p>
-                <p>Peso:<br>${(peso/10).toFixed(1)}Kg</p></span>
-                <span><p>Categoria:<br>${catego}</p>
-                <p>Habilidad:${habili.toString()}</span></div>
-                </div>
-                </div></div>`);
+  const body =$(`<div class="modal-body"></div>`);
+  const row =$(`<div class="row">
+  <div class="col-xs-10 flex-column">
+  <h2 class='h2 modal-title'>${data.pokemon_species.name}</h2></div>
+  <div class="col-xs-2 flex-column"><button type="button" class="close"
+  data-dismiss="modal" aria-label="Close">
+  <span class="fa fa-times fa-lg" aria-hidden="true"></span></button></div>
+  </div>`);
+  const row2 = $(`<div class="row"></div>`);
+  const col5 =$(`<div class="col-xs-5 flex-column"></div>`);
+  const img =$(`<div class="flex-column divcont">
+    <div class="divImg">
+    <img src='https://serebii.net/art/th/${data.entry_number}.png' alt="">
+    </div>
+    <div class="trapecio flex-column">
+    <div class="flex-row divico">
+    <img class="ico" src="assets/icon/pokeball_gray.png">
+    <img class="ico" src="assets/icon/valentines-heart.png">
+    <img class="ico" src="assets/icon/data.png">
+    </div>
+    </div>
+    </div>`);
+ const col7=$(`<div class="col-xs-7 flex-column"></div>`);
+ const des =$(`<p class="des">${description}</p>`);
+ const divca =$(`<div class="flex-row txt-white bg-steelblue carac">
+   <span class="lef">
+   <p>Altura:<br>${(altura/10).toFixed(1)}m</p>
+   <p>Peso:<br>${(peso/10).toFixed(1)}Kg</p>
+   </span>
+   <span class="rig">
+   <p>Categoria:<br>${catego}</p>
+   <p>Habilidad:<br>${habili.toString()}</p>
+   </span>
+   </div>`);
+const divti = $(`<div class="tip"></div>`);
+const ptip = $(`<p>Tipo:</p>`);
+const spanti =$(`<span>${tipo}</span>`);
+const divdeb = $(`<div class="deb"></div>`);
+const pdeb = $(`<p>Debilidad:</p>`);
+const spandeb = $(`<span>${debilidad}</span>`);
+
   modalp.append(dialog);
   dialog.append(content);
   content.append(body);
+  body.append(row);
+  body.append(row2);
+  row2.append(col5);
+  col5.append(img);
+  row2.append(col7);
+  col7.append(des);
+  col7.append(divca);
+  col7.append(divti);
+  divti.append(ptip);
+  divti.append(spanti);
+  col7.append(divdeb);
+  divdeb.append(pdeb);
+  divdeb.append(spandeb);
+
   return modalp;
 }
 
@@ -53,7 +82,6 @@ const poke = (unPoke) => {
 
 
   divCont.click(function(){
-        // $('#myModal').empty();
 
         $.getJSON(unPoke.pokemon_species.url, function(result){
 
@@ -64,15 +92,17 @@ const poke = (unPoke) => {
                 state.altura = result2.height;
                 state.peso = result2.weight;
                 result2.abilities.forEach(function(e){
+                  state.habili = [];
                   return $.getJSON(e.ability.url,(i)=>{
                     state.habili.push(i.names[2].name);
-                    return state.habili;
+                    return state.habili.toString();
                   });
                 });
-                console.log(state.habili);
               result2.types.forEach(function(x){
+                state.tipo=[];
                 return  $.getJSON(x.type.url,(y)=>{
                     return state.tipo.push(y.names[4].name), y.damage_relations.double_damage_from.forEach((z)=>{
+                      state.debilidad=[];
                       return $.getJSON(z.url,(a)=>{
                         state.debilidad.push(a.names[4].name);
                         return state.debilidad;
@@ -81,26 +111,21 @@ const poke = (unPoke) => {
                     });
                   });
                 });
-
-                // return state.altura,state.peso;
-
               });
-              // $('#myModal').empty();
-
-              // return console.log(state.descrip,state.catego,state.altura,state.peso,state.catego,state.habili,state.tipo,state.debilidad);
-
-
             })
             .done(function(data2) {
-              $('.modal').empty();
-              fmodal(unPoke,state.descrip,state.altura,state.peso,state.catego,state.habili,state.tipo,state.debilidad).modal();
+              setTimeout(function(){
+                $('.modal').empty();
+                fmodal(unPoke,state.descrip,state.altura,state.peso,state.catego,state.habili,state.tipo,state.debilidad).modal();
+              }, 8000);
 
               })
             .fail(function( jqxhr, textStatus, error ) {
-                alert( jqxhr, textStatus, error );
+                alert("Error del API");
             });
 
           });
+
 
   divCont.append(divImg);
   divImg.append(img);

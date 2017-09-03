@@ -30,7 +30,7 @@ $.getJSON("https://pokeapi.co/api/v2/pokedex/1/",(data1)=>{
     console.log(state.pok);
     })
   .fail(function( jqxhr, textStatus, error ) {
-      alert( jqxhr, textStatus, error );
+      alert("Error del API");
   });
 
 
