@@ -54,6 +54,12 @@ body *{
 .divcont{
     background-color: lightgray;
     margin: 15px;
+    text-decoration: none;
+    color: black;
+}
+a:hover, .divcont:hover,a:focus,.divcont:focus{
+    text-decoration: none;
+    color: black;
 }
 .divImg{
   overflow: hidden;
@@ -80,4 +86,14 @@ body *{
 .name{
   text-transform: capitalize;
   font-weight: 100;
+}
+/*Modal*/
+.modal-body{
+  background-color: whitesmoke;
+}
+.modal-title{
+  text-transform: capitalize;
+}
+.icon-x:before {
+  content: "\e900";
 }
